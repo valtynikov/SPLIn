@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<webParts>
+  <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
+    <metaData>
+      <type name="SPLIn.WebParts.PeopleSearchRefiner, $SharePoint.Project.AssemblyFullName$" />
+      <importErrorMessage>$Resources:core,ImportErrorMessage;</importErrorMessage>
+    </metaData>
+    <data>
+      <properties>
+		  <property name="Title" type="string">LinkedIn People Search Refinement</property>
+		  <property name="Description" type="string">LinkedIn people search refinement web part for SharePoint 2010</property>
+		  <property name="ChromeType" type="chrometype">None</property>
+		  <property name="RefinerFields" type="string">code,name,buckets:(name,code,count,selected)</property>
+		  <property name="Refiners" type="string">location,industry</property>
+	  </properties>
+    </data>
+  </webPart>
+</webParts>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<webParts>
+  <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
+    <metaData>
+      <type name="SPLIn.WebParts.PeopleSearchStatistics, $SharePoint.Project.AssemblyFullName$" />
+      <importErrorMessage>$Resources:core,ImportErrorMessage;</importErrorMessage>
+    </metaData>
+    <data>
+      <properties>
+		  <property name="Title" type="string">LinkedIn People Search Statistics</property>
+		  <property name="Description" type="string">LinkedIn people search statistics web part for SharePoint 2010</property>
+		  <property name="ChromeType" type="chrometype">None</property>
+	  </properties>
+    </data>
+  </webPart>
+</webParts>

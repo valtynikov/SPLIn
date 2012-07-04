@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/" >
+  <Module Name="PeopleSearchRefiner" List="113" Url="_catalogs/wp">
+    <File Path="PeopleSearchRefiner\PeopleSearchRefiner.webpart" Url="PeopleSearchRefiner.webpart" Type="GhostableInLibrary">
+      <Property Name="Group" Value="SPLIn" />
+    </File>
+  </Module>
+</Elements>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<webParts>
+  <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
+    <metaData>
+      <type name="SPLIn.WebParts.PeopleSearchBox, $SharePoint.Project.AssemblyFullName$" />
+      <importErrorMessage>$Resources:core,ImportErrorMessage;</importErrorMessage>
+    </metaData>
+    <data>
+      <properties>
+        <property name="Title" type="string">LinkedIn People Search Box</property>
+        <property name="Description" type="string">LinkedIn people search box web part for SharePoint 2010</property>
+		<property name="ChromeType" type="chrometype">None</property>
+		<property name="RememberMe" type="bool">True</property>
+		<property name="DataFields" type="string">id</property>
+      </properties>
+    </data>
+  </webPart>
+</webParts>

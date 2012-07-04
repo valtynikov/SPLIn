@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="bbbbfc25-9d17-4c8c-a27f-6bd4dbec1df1" solutionId="bbbbfc25-9d17-4c8c-a27f-6bd4dbec1df1" resetWebServer="false" name="SPLIn.WebParts" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="dae0ddd8-5ec7-4f70-8802-183e08504f7b" />
+  </features>
+</package>

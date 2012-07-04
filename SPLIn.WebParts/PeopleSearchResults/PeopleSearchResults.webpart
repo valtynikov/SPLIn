@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<webParts>
+  <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
+    <metaData>
+      <type name="SPLIn.WebParts.PeopleSearchResults, $SharePoint.Project.AssemblyFullName$" />
+      <importErrorMessage>$Resources:core,ImportErrorMessage;</importErrorMessage>
+    </metaData>
+    <data>
+      <properties>
+		<property name="Title" type="string">LinkedIn People Search Results</property>
+		<property name="Description" type="string">LinkedIn people search results web part for SharePoint 2010</property>
+		<property name="ChromeType" type="chrometype">None</property>
+		<property name="DataFields" type="string">id,formatted-name,picture-url,headline,summary,specialties,phone-numbers,num-connections,site-standard-profile-request,location,industry,distance,num-connections-capped</property>
+		<property name="ResultCount" type="int">10</property>
+      </properties>
+    </data>
+  </webPart>
+</webParts>
