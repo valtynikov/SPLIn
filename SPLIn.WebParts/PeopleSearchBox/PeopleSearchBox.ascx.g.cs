@@ -78,25 +78,34 @@ namespace SPLIn.WebParts {
                     "     if (facetCode && bucketCode) {\r\n            url += \"&facet=\" + facetCode + " +
                     "\",\" + bucketCode;\r\n        }\r\n\r\n        if (typeof getPeopleSearchResultCount ==" +
                     " \'function\') {\r\n            url += \"&\" + getPeopleSearchResultCount();\r\n        " +
-                    "}\r\n\r\n        IN.API.Raw(url).result(function (result) {\r\n            if(typeof s" +
-                    "howPeopleSearchResults == \'function\'){\r\n                showPeopleSearchResults(" +
-                    "result);\r\n            }\r\n            if (typeof showPeopleSearchRefiners == \'fun" +
-                    "ction\') {\r\n                showPeopleSearchRefiners(result);\r\n            }\r\n   " +
-                    "         if (typeof showPeopleSearchStatistics == \'function\') {\r\n               " +
-                    " showPeopleSearchStatistics(result);\r\n            }\r\n        });\r\n    }\r\n\r\n    $" +
-                    "(document).ready(function () {\r\n        $(\'#SPLInSearchBox\').bind(\'keypress\', fu" +
-                    "nction (e) {\r\n            if (e.keyCode == 13) {\r\n                e.preventDefau" +
-                    "lt();\r\n                loadPeopleSearchData();\r\n            }\r\n        });\r\n    " +
-                    "});\r\n</script>\r\n\r\n<div>\r\n    <table class=\"ms-sbtable ms-sbtable-ex\" cellpadding" +
-                    "=\"0\" cellspacing=\"0\" border=\"0\">\r\n        <tr class=\"ms-sbrow\">\r\n            <td" +
-                    " class=\"ms-sbcell\">\r\n                <input type=\"text\" name=\"SPLInSearchBox\" id" +
-                    "=\"SPLInSearchBox\" class=\"ms-sbplain\" style=\"margin:0px; width:368px;\" />\r\n      " +
-                    "      </td>\r\n            <td class=\"ms-sbgo ms-sbcell\">\r\n                <a href" +
-                    "=\"javascript:loadPeopleSearchData()\"><img style=\"border-width:0px;\" class=\"srch-" +
-                    "gosearchimg\" onmouseover=\"this.src=\'\\u002f_layouts\\u002fimages\\u002fgosearchhove" +
-                    "r30.png\'\" onmouseout=\"this.src=\'\\u002f_layouts\\u002fimages\\u002fgosearch30.png\'\"" +
-                    " src=\"/_layouts/images/gosearch30.png\" /></a>\r\n            </td>\r\n        </tr>\r" +
-                    "\n    </table>\r\n</div>");
+                    "}\r\n\r\n        IN.API.Raw(url).result(function (result) {\r\n            if (typeof " +
+                    "showPeopleSearchResults == \'function\') {\r\n                showPeopleSearchResult" +
+                    "s(result);\r\n            }\r\n            if (typeof showPeopleSearchRefiners == \'f" +
+                    "unction\') {\r\n                showPeopleSearchRefiners(result);\r\n            }\r\n " +
+                    "           if (typeof showPeopleSearchStatistics == \'function\') {\r\n             " +
+                    "   showPeopleSearchStatistics(result);\r\n            } \r\n        })\r\n        .err" +
+                    "or(function (error) {\r\n            if (error.status === 401) {\r\n                " +
+                    "// try it again\r\n                var oldToken = IN.ENV.auth.oauth_token;\r\n      " +
+                    "          IN.User.refresh();\r\n                // since the refresh method is asy" +
+                    "nchronous but doesn\'t provide a callback, we have to poll\r\n                funct" +
+                    "ion tryAgain() {\r\n                    setTimeout(function () {\r\n                " +
+                    "        if (oldToken !== IN.ENV.auth.oauth_token) {\r\n                           " +
+                    " loadPeopleSearchData();\r\n                        }\r\n                        els" +
+                    "e {\r\n                            setTimeout(tryAgain, 100);\r\n                   " +
+                    "     }\r\n                    }, 100);\r\n                }\r\n                tryAgai" +
+                    "n();\r\n            }\r\n        });\r    }\r\n\r\n    $(document).ready(function () {\r\n " +
+                    "       $(\'#SPLInSearchBox\').bind(\'keypress\', function (e) {\r\n            if (e.k" +
+                    "eyCode == 13) {\r\n                e.preventDefault();\r\n                loadPeople" +
+                    "SearchData();\r\n            }\r\n        });\r\n    });\r\n</script>\r\n\r\n<div>\r\n    <tab" +
+                    "le class=\"ms-sbtable ms-sbtable-ex\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\r" +
+                    "\n        <tr class=\"ms-sbrow\">\r\n            <td class=\"ms-sbcell\">\r\n            " +
+                    "    <input type=\"text\" name=\"SPLInSearchBox\" id=\"SPLInSearchBox\" class=\"ms-sbpla" +
+                    "in\" style=\"margin:0px; width:368px;\" />\r\n            </td>\r\n            <td clas" +
+                    "s=\"ms-sbgo ms-sbcell\">\r\n                <a href=\"javascript:loadPeopleSearchData" +
+                    "()\"><img style=\"border-width:0px;\" class=\"srch-gosearchimg\" onmouseover=\"this.sr" +
+                    "c=\'\\u002f_layouts\\u002fimages\\u002fgosearchhover30.png\'\" onmouseout=\"this.src=\'\\" +
+                    "u002f_layouts\\u002fimages\\u002fgosearch30.png\'\" src=\"/_layouts/images/gosearch30" +
+                    ".png\" /></a>\r\n            </td>\r\n        </tr>\r\n    </table>\r\n</div>");
         }
         
         private void InitializeControl() {

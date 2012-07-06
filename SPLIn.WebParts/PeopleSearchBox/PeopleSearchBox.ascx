@@ -46,7 +46,7 @@
         }
 
         IN.API.Raw(url).result(function (result) {
-            if(typeof showPeopleSearchResults == 'function'){
+            if (typeof showPeopleSearchResults == 'function') {
                 showPeopleSearchResults(result);
             }
             if (typeof showPeopleSearchRefiners == 'function') {
@@ -54,9 +54,27 @@
             }
             if (typeof showPeopleSearchStatistics == 'function') {
                 showPeopleSearchStatistics(result);
+            } 
+        })
+        .error(function (error) {
+            if (error.status === 401) {
+                // try it again
+                var oldToken = IN.ENV.auth.oauth_token;
+                IN.User.refresh();
+                // since the refresh method is asynchronous but doesn't provide a callback, we have to poll
+                function tryAgain() {
+                    setTimeout(function () {
+                        if (oldToken !== IN.ENV.auth.oauth_token) {
+                            loadPeopleSearchData();
+                        }
+                        else {
+                            setTimeout(tryAgain, 100);
+                        }
+                    }, 100);
+                }
+                tryAgain();
             }
-        });
-    }
+        });    }
 
     $(document).ready(function () {
         $('#SPLInSearchBox').bind('keypress', function (e) {
