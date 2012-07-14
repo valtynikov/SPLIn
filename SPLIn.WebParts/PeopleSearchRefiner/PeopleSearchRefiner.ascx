@@ -13,13 +13,20 @@
             var facet = result.facets.values[facetIndex];
             facetsHTML += '     <div class="ms-searchref-categoryname">' + facet.name + '</div>';
             facetsHTML += '     <ul class="ms-searchref-filters">';
+            var hasRefiner = false;
+            var bucketsHTML = "";
             for (var bucketIndex in facet.buckets.values) {
                 var bucket = facet.buckets.values[bucketIndex];
-                facetsHTML += '     <li class="ms-searchref-filter ms-searchref-' + (bucket.selected ? 'selected' : 'unselected') + '">';
-                facetsHTML += '         <a class="ms-searchref-filterlink" title="Refine By: ' + bucket.name + '" href=javascript:loadPeopleSearchData("' + facet.code + '","' + bucket.code + '")>' + bucket.name + '</a>';
-                facetsHTML += '         <span class="ms-searchref-count">(' + bucket.count + ')</span>';
-                facetsHTML += '     </li>';
+                hasRefiner = hasRefiner || bucket.selected;
+                bucketsHTML += '    <li class="ms-searchref-filter ms-searchref-' + (bucket.selected ? 'selected' : 'unselected') + '">';
+                bucketsHTML += '        <a class="ms-searchref-filterlink" title="Refine By: ' + bucket.name + '" href=javascript:loadPeopleSearchData("' + facet.code + '","' + bucket.code + '")>' + bucket.name + '</a>';
+                bucketsHTML += '        <span class="ms-searchref-count">(' + bucket.count + ')</span>';
+                bucketsHTML += '    </li>';
             }
+            facetsHTML += '         <li class="ms-searchref-filter ms-searchref-' + (!hasRefiner ? 'selected' : 'unselected') + '">';
+            facetsHTML += '             <a class="ms-searchref-filterlink" title="Refine By:" href=javascript:loadPeopleSearchData()> Any ' + facet.name + '</a>';
+            facetsHTML += '         </li>';
+            facetsHTML += bucketsHTML;
             facetsHTML += '     </ul>';
             facetsHTML += '     <div class="ms-searchref-catseparator"> </div>';
         }

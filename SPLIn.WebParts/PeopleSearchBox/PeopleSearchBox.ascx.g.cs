@@ -93,19 +93,19 @@ namespace SPLIn.WebParts {
                     " loadPeopleSearchData();\r\n                        }\r\n                        els" +
                     "e {\r\n                            setTimeout(tryAgain, 100);\r\n                   " +
                     "     }\r\n                    }, 100);\r\n                }\r\n                tryAgai" +
-                    "n();\r\n            }\r\n        });\r    }\r\n\r\n    $(document).ready(function () {\r\n " +
-                    "       $(\'#SPLInSearchBox\').bind(\'keypress\', function (e) {\r\n            if (e.k" +
-                    "eyCode == 13) {\r\n                e.preventDefault();\r\n                loadPeople" +
-                    "SearchData();\r\n            }\r\n        });\r\n    });\r\n</script>\r\n\r\n<div>\r\n    <tab" +
-                    "le class=\"ms-sbtable ms-sbtable-ex\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\r" +
-                    "\n        <tr class=\"ms-sbrow\">\r\n            <td class=\"ms-sbcell\">\r\n            " +
-                    "    <input type=\"text\" name=\"SPLInSearchBox\" id=\"SPLInSearchBox\" class=\"ms-sbpla" +
-                    "in\" style=\"margin:0px; width:368px;\" />\r\n            </td>\r\n            <td clas" +
-                    "s=\"ms-sbgo ms-sbcell\">\r\n                <a href=\"javascript:loadPeopleSearchData" +
-                    "()\"><img style=\"border-width:0px;\" class=\"srch-gosearchimg\" onmouseover=\"this.sr" +
-                    "c=\'\\u002f_layouts\\u002fimages\\u002fgosearchhover30.png\'\" onmouseout=\"this.src=\'\\" +
-                    "u002f_layouts\\u002fimages\\u002fgosearch30.png\'\" src=\"/_layouts/images/gosearch30" +
-                    ".png\" /></a>\r\n            </td>\r\n        </tr>\r\n    </table>\r\n</div>");
+                    "n();\r\n            }\r\n        });\r\n    }\r\n\r\n    $(document).ready(function () {\r\n" +
+                    "        $(\'#SPLInSearchBox\').bind(\'keypress\', function (e) {\r\n            if (e." +
+                    "keyCode == 13) {\r\n                e.preventDefault();\r\n                loadPeopl" +
+                    "eSearchData();\r\n            }\r\n        });\r\n    });\r\n</script>\r\n\r\n<div>\r\n    <ta" +
+                    "ble class=\"ms-sbtable ms-sbtable-ex\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" +
+                    "\r\n        <tr class=\"ms-sbrow\">\r\n            <td class=\"ms-sbcell\">\r\n           " +
+                    "     <input type=\"text\" name=\"SPLInSearchBox\" id=\"SPLInSearchBox\" class=\"ms-sbpl" +
+                    "ain\" style=\"margin:0px; width:368px;\" />\r\n            </td>\r\n            <td cla" +
+                    "ss=\"ms-sbgo ms-sbcell\">\r\n                <a href=\"javascript:loadPeopleSearchDat" +
+                    "a()\"><img style=\"border-width:0px;\" class=\"srch-gosearchimg\" onmouseover=\"this.s" +
+                    "rc=\'\\u002f_layouts\\u002fimages\\u002fgosearchhover30.png\'\" onmouseout=\"this.src=\'" +
+                    "\\u002f_layouts\\u002fimages\\u002fgosearch30.png\'\" src=\"/_layouts/images/gosearch3" +
+                    "0.png\" /></a>\r\n            </td>\r\n        </tr>\r\n    </table>\r\n</div>");
         }
         
         private void InitializeControl() {

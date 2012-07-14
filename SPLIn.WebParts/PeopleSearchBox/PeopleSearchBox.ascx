@@ -74,7 +74,8 @@
                 }
                 tryAgain();
             }
-        });    }
+        });
+    }
 
     $(document).ready(function () {
         $('#SPLInSearchBox').bind('keypress', function (e) {

@@ -44,31 +44,29 @@ namespace SPLIn.WebParts {
         
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         private void @__Render__control1(System.Web.UI.HtmlTextWriter @__w, System.Web.UI.Control parameterContainer) {
-            @__w.Write(@"
-
-<script type=""text/javascript"">
-    function showPeopleSearchRefiners(result) {
-        var facetsHTML = """";
-        for (var facetIndex in result.facets.values) {
-            var facet = result.facets.values[facetIndex];
-            facetsHTML += '     <div class=""ms-searchref-categoryname"">' + facet.name + '</div>';
-            facetsHTML += '     <ul class=""ms-searchref-filters"">';
-            for (var bucketIndex in facet.buckets.values) {
-                var bucket = facet.buckets.values[bucketIndex];
-                facetsHTML += '     <li class=""ms-searchref-filter ms-searchref-' + (bucket.selected ? 'selected' : 'unselected') + '"">';
-                facetsHTML += '         <a class=""ms-searchref-filterlink"" title=""Refine By: ' + bucket.name + '"" href=javascript:loadPeopleSearchData(""' + facet.code + '"",""' + bucket.code + '"")>' + bucket.name + '</a>';
-                facetsHTML += '         <span class=""ms-searchref-count"">(' + bucket.count + ')</span>';
-                facetsHTML += '     </li>';
-            }
-            facetsHTML += '     </ul>';
-            facetsHTML += '     <div class=""ms-searchref-catseparator""> </div>';
-        }
-
-        $(""#SPLInPeopleRefiners"").html(facetsHTML);
-    }
-
-    function getPeopleSearchRefinerFields() {
-        return ""facets:(");
+            @__w.Write("\r\n\r\n<script type=\"text/javascript\">\r\n    function showPeopleSearchRefiners(result" +
+                    ") {\r\n        var facetsHTML = \"\";\r\n        for (var facetIndex in result.facets." +
+                    "values) {\r\n            var facet = result.facets.values[facetIndex];\r\n          " +
+                    "  facetsHTML += \'     <div class=\"ms-searchref-categoryname\">\' + facet.name + \'<" +
+                    "/div>\';\r\n            facetsHTML += \'     <ul class=\"ms-searchref-filters\">\';\r\n  " +
+                    "          var hasRefiner = false;\r\n            var bucketsHTML = \"\";\r\n          " +
+                    "  for (var bucketIndex in facet.buckets.values) {\r\n                var bucket = " +
+                    "facet.buckets.values[bucketIndex];\r\n                hasRefiner = hasRefiner || b" +
+                    "ucket.selected;\r\n                bucketsHTML += \'    <li class=\"ms-searchref-fil" +
+                    "ter ms-searchref-\' + (bucket.selected ? \'selected\' : \'unselected\') + \'\">\';\r\n    " +
+                    "            bucketsHTML += \'        <a class=\"ms-searchref-filterlink\" title=\"Re" +
+                    "fine By: \' + bucket.name + \'\" href=javascript:loadPeopleSearchData(\"\' + facet.co" +
+                    "de + \'\",\"\' + bucket.code + \'\")>\' + bucket.name + \'</a>\';\r\n                bucket" +
+                    "sHTML += \'        <span class=\"ms-searchref-count\">(\' + bucket.count + \')</span>" +
+                    "\';\r\n                bucketsHTML += \'    </li>\';\r\n            }\r\n            face" +
+                    "tsHTML += \'         <li class=\"ms-searchref-filter ms-searchref-\' + (!hasRefiner" +
+                    " ? \'selected\' : \'unselected\') + \'\">\';\r\n            facetsHTML += \'             <" +
+                    "a class=\"ms-searchref-filterlink\" title=\"Refine By:\" href=javascript:loadPeopleS" +
+                    "earchData()> Any \' + facet.name + \'</a>\';\r\n            facetsHTML += \'         <" +
+                    "/li>\';\r\n            facetsHTML += bucketsHTML;\r\n            facetsHTML += \'     " +
+                    "</ul>\';\r\n            facetsHTML += \'     <div class=\"ms-searchref-catseparator\">" +
+                    " </div>\';\r\n        }\r\n\r\n        $(\"#SPLInPeopleRefiners\").html(facetsHTML);\r\n   " +
+                    " }\r\n\r\n    function getPeopleSearchRefinerFields() {\r\n        return \"facets:(");
                 @__w.Write( RefinerFields );
 
             @__w.Write(")\";\r\n    }\r\n\r\n    function getPeopleSearchRefiners() {\r\n        return \"facets=");
