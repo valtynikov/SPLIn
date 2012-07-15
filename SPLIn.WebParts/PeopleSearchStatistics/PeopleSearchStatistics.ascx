@@ -11,7 +11,10 @@
         var statisticsHTML = '  <div class="srch-stats">';
         var resultFrom = result.people._start ? result.people._start : 0;
         var resultTo = result.people._count ? resultFrom + result.people._count : result.people._total;
-        statisticsHTML += '         <b>' + (resultFrom + 1) + '-' + resultTo + '</b> of ' + result.people._total + ' results';
+        if (result.people._total > 0) {
+            resultFrom += 1;
+        }
+        statisticsHTML += '         <b>' + resultFrom + '-' + resultTo + '</b> of ' + result.people._total + ' results';
         statisticsHTML += '     </div>';
 
         $("#SPLInPeopleStatistics").html(statisticsHTML);

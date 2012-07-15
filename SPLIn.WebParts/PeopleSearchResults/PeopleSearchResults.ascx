@@ -12,6 +12,10 @@
     }
 
     function showPeopleSearchResults(result) {
+        if (result.people._total == 0) {
+            return;
+        }
+
         var dataIds = [];
         for (var index in result.people.values) {
             profile = result.people.values[index]

@@ -6,14 +6,30 @@
 <%@ Register Tagprefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="PeopleSearchBox.ascx.cs" Inherits="SPLIn.WebParts.PeopleSearchBox" %>
 
-<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+<script type="text/javascript" src="//platform.linkedin.com/in.js">
     api_key: <%= LinkedInApiKey %>
     authorize: <%= RememberMe.ToString().ToLower() %>
 </script>
 
-<script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>
- 
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/themes/base/jquery-ui.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js" type="text/javascript"></script>
+
 <script type="text/javascript">
+    //https://developer.linkedin.com/documents/people-search-api
+    var availableTags = [
+			"first-name:",
+			"last-name:",
+			"company-name:",
+            "current-company:",
+            "title:",
+            "current-title:",
+            "school-name:",
+            "current-school:",
+            "country-code:",
+            "postal-code:"
+		];
+
     function loadPeopleSearchData(facetCode, bucketCode) {
         var searchQuery = $("#SPLInSearchBox").val();
         if (searchQuery == "") {
@@ -29,6 +45,11 @@
 
         if (typeof getPeopleSearchRefinerFields == 'function') {
             url += "," + getPeopleSearchRefinerFields();
+        }
+
+        for (var i in availableTags) {
+            var tag = availableTags[i];
+            searchQuery = searchQuery.replace(tag, "&" + tag.replace(":", "="));
         }
 
         url += ")?keywords=" + searchQuery;
@@ -78,12 +99,47 @@
     }
 
     $(document).ready(function () {
-        $('#SPLInSearchBox').bind('keypress', function (e) {
-            if (e.keyCode == 13) {
-                e.preventDefault();
-                loadPeopleSearchData();
-            }
-        });
+
+        function split(val) {
+            return val.split(/ \s*/);
+        }
+        function extractLast(term) {
+            return split(term).pop();
+        }
+
+        $('#SPLInSearchBox')
+            .bind('keypress', function (e) {
+                if (e.keyCode == 13) {
+                    e.preventDefault();
+                    loadPeopleSearchData();
+                }
+            })
+		    .bind("keydown", function (event) {
+		        if (event.keyCode === $.ui.keyCode.TAB && $(this).data("autocomplete").menu.active) {
+    		        event.preventDefault();
+    		    }
+    	    })
+		    .autocomplete({
+			    minLength: 0,
+			    source: function (request, response) {
+			        // delegate back to autocomplete, but extract the last term
+			        response($.ui.autocomplete.filter(
+					    availableTags, extractLast(request.term)));
+			    },
+			    focus: function () {
+			        // prevent value inserted on focus
+			        return false;
+			    },
+			    select: function (event, ui) {
+			        var terms = split(this.value);
+			        // remove the current input
+			        terms.pop();
+			        // add the selected item
+			        terms.push(ui.item.value);
+			        this.value = terms.join(" ");
+			        return false;
+			    }
+		    });
     });
 </script>
 
